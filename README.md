@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+<h2>Gerenciador dos episódios de Rick and Morty! </h2>
+ 
+O gerenciador de episódios de Rick and Morty foi desenvolvido em React, e consumo em Graphql da API utilizando Apollo Client. "https://rickandmortyapi.com/graphql" acesse o link para mais detalhes da API. Ideia do projeto basicamente é acessar os episódios, marcar como assistido, favoritar, fitlrar episódios por nome e consultar episódios favoritados;
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3> Importações:</h3>
 
-## Available Scripts
+- O código importa os módulos necessários do React, bem como alguns componentes e estilos.
+- Utiliza o Apollo Client para fazer consultas GraphQL.
+- Importa ícones de bibliotecas como react-icons para uso nos botões e elementos da interface.
 
-In the project directory, you can run:
+<h3> Definição da consulta GraphQL:</h3>
 
-### `npm start`
+- Utiliza hooks do React, como useState para gerenciar o estado.
+- Utiliza o hook useQuery do Apollo Client para executar a consulta GraphQL e gerenciar o estado de carregamento, erro e dados.
+- Define funções para lidar com interações do usuário, como exibir detalhes de um episódio, marcar como favorito, marcar como assistido, entre outras.
+- Renderiza a lista de episódios, permitindo filtrar por nome do episódio e exibindo detalhes dos episódios em uma sobreposição.
+- Permite a navegação entre páginas de episódios com os botões de avançar e retroceder.
+- Mostra uma mensagem de carregamento enquanto os dados estão sendo buscados e exibe uma mensagem de erro caso ocorra algum problema.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h3> Estrutura do Render:</h3>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- O componente renderiza uma série de elementos HTML para representar a interface do usuário.
+- Inclui a renderização dinâmica dos episódios obtidos da consulta GraphQL.
+- Exibe um campo de busca para filtrar os episódios por nome.
+- Mostra uma lista de episódios favoritos que podem ser abertos ou fechados.
 
-### `npm test`
+<h3>Intalando as dependências do projeto</h3>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🚀... Após clonar o repositório com comando "git clone" abra o terminal no repositório rick and morty e faça a instalação do pacote node
+com o comando "npm install". Com o gerenciador de pacotes instalado abra o terminal e digite o seguinte comando para iniciar a aplicação em um servidor local "npm start" ou "yarn start".
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
