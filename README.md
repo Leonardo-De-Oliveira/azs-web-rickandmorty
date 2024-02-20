@@ -1,6 +1,8 @@
 <h2>Gerenciador dos episódios de Rick and Morty! </h2>
  
-O gerenciador de episódios de Rick and Morty foi desenvolvido em React, e consumo em Graphql da API utilizando Apollo Client. "https://rickandmortyapi.com/graphql" acesse o link para mais detalhes da API. Ideia do projeto basicamente é acessar os episódios, marcar como assistido, favoritar, fitlrar episódios por nome e consultar episódios favoritados;
+O gerenciador de episódios de Rick and Morty foi desenvolvido em React, e consumo em Graphql da API utilizando Apollo Client. "https://rickandmortyapi.com/graphql" acesse o link para mais detalhes da API. 
+
+A ideia do projeto é acessar os episódios, marcar como assistido, favoritar, fitlrar episódios por nome e consultar episódios favoritados;
 
 <h3> Importações:</h3>
 
