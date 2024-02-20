@@ -5,16 +5,15 @@ import './styles.css';
 import { FaPlus } from "react-icons/fa6";
 import { GoCheck, GoChevronLeft, GoChevronRight } from "react-icons/go"
 import { MdFavoriteBorder } from "react-icons/md";
-
-import { client } from '../../config/client.grapgql';
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 import Footer from '../../Components/Footer';
 import Banner from '../../Components/Banner';
 
 
 const GET_EPISODES = gql`
-  query GetEpisodes {
-    episodes {
+  query GetEpisodes($page: Int!) {
+    episodes(page: $page) {
       results {
         id
         episode
@@ -36,7 +35,11 @@ const GET_EPISODES = gql`
 
 function Home() {
 
-    const { loading, data } = useQuery(GET_EPISODES);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const { loading, error, data } = useQuery(GET_EPISODES, {
+        variables: { page: currentPage }
+    });
 
     const [show, setShow] = useState('hidden');
     const [open, setOpen] = useState('close');
@@ -101,6 +104,7 @@ function Home() {
 
     }
 
+    //altera opção visto do card
     function toggleWatched(id) {
         setWatchedId(prevIds => {
             if (prevIds.includes(id)) {
@@ -111,6 +115,7 @@ function Home() {
         })
     }
 
+    //abre e fecha a aba de favoritos
     function openClose() {
         if (open === 'close') {
             setOpen('open');
@@ -119,21 +124,39 @@ function Home() {
         }
     }
 
+    //coleta o texto inserido no input
     function dataEnter(event) {
         setText(event.target.value);
     }    
+
     function filterEpisode(card) {
         const searchText = text ? text.toLowerCase() : '';
         const episodeName = card.name ? card.name.toLowerCase() : '';
+
+        //verifica se seachtext está  vazio, se estiver a função retorna true
+        //então significa que nenhum filtro foi aplicado no input
         if (!searchText) {
             return true;
         }
         return episodeName.includes(searchText);
     }
     
+    function Next() {
+        if(currentPage !== 3) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
 
-    if (loading) return <div className='container-home'><p>Loading...</p></div>;
+    function Back() {
+        if(currentPage !== 1) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
 
+    if (loading) return <div className='container-loading'><h1>Loading...</h1></div>;
+
+    if (error) return <div className='container-loading'> <h1>Error : {error.message}</h1></div>;
+    
     return (
         <main className='container-home'>
 
@@ -157,6 +180,11 @@ function Home() {
 
                 </div>
 
+            </div>
+
+            <div className='container-pages'>
+                <button className='btn pages' onClick={Back}><IoIosArrowBack size={35} /></button>
+                <button className='btn pages' onClick={Next}><IoIosArrowForward size={35} /></button>
             </div>
 
             <div className='container-cards'>

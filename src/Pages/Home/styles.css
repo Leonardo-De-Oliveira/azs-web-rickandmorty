@@ -1,6 +1,18 @@
+.container-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.container-loading h1 {
+    color: #00cc8b;
+}
+
 .container-home {
     width: 100%;
-    height: 100vh;   
+    height: 50vh;   
 
     background-image: url('../../assets/banner.jpg');
     background-position: center;
@@ -251,6 +263,26 @@
 
 .not-found {
     color: #fff;
+}
+
+.container-pages {
+    text-align: center;
+}
+
+.pages {
+    background-color: transparent;
+    color: #00cc8b;
+    padding: 5px;
+    border: 1px solid #00cc8b00;
+    border-radius: 0px;
+    margin: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.pages:hover {
+    border-color: #00cc8b;
 }
 
 @media(max-width: 410px) {

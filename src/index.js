@@ -6,8 +6,6 @@ import './globalstyles.css';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './config/client.grapgql';
 
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
