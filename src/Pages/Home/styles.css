@@ -12,62 +12,12 @@
 
 .container-home {
     width: 100%;
-    height: 50vh;   
+    height: 80vh;   
 
     background-image: url('../../assets/banner.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.container-search {
-    width: 100%;
-    height: 280px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.container-search input {
-    width: 280px;
-    height: 40px;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 20px;
-    text-align: center;
-    background-color: #00cc8b;
-    border: 1px solid #00000000;
-    outline: none;
-    transition: 0.6s;
-}
-
-.container-search input:hover {
-    background-color: transparent;
-    color: #00cc8b ;
-    border-color: #00cc8b;
-}
-.container-search input:disabled {
-    color: #000;
-}
-
-
-.btn-open {
-    margin-top: 50px;
-    background-color: #00cc8b;
-    border: 1px solid transparent;
-    border-radius: 20px;
-    padding: 2px 15px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    color: #000;
-    transition: 0.6s;
-}
-.btn-open:hover {
-    background-color: transparent;
-    color: #00cc8b;
-    border: 1px solid #00cc8b;
 }
 
 .container-cards {
@@ -78,101 +28,6 @@
     flex-wrap: wrap;    
     background-color: #000000;
     position: relative;
-}
-
-.card {
-    width: 100%;
-    max-width: 350px;
-    height: 220px;
-    padding: 4px;
-    margin: 35px 10px;
-    font-size: 16px;
-    color: #fff;
-    
-    background-image: url('../../assets/rick.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    border-radius: 4px;
-    border: 2px solid #ffffff00;
-    transition: .6s;
-}
-.card:hover {
-    border-color: #00cc8b;
-}
-.card span {
-    font-weight: 500;
-    font-size: 20px;
-}
-.card img {
-    width: 100%;
-    height: 100%;
-}
-
-.card-description {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: space-around;
-    gap: 5px;
-    flex-direction: column;
-}
-.card-description p {
-    margin: 0 0 0 10px;
-}
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.btn {
-    background-color: #00cc8b;
-    color: #000000;
-    font-weight: bold;
-    padding: 5px 10px;
-    margin: 20px 0 0 10px;
-    border-radius: 20px;
-    border: 2px solid #00cc8b00;
-    outline: none;
-    cursor: pointer;
-    transition: 0.6s;
-}
-.selected {
-    color: #000;
-    background-color: #00cc8b;
-}
-.favorite, .watched {
-    background-color: #00cc8b00;
-    color:#fff;
-}
-
-
-.card-description button:hover {
-    background-color: #000;
-    color: #00cc8b;
-    border-color: #00cc8b;
-}
-
-.container-description {
-    margin: 0 auto;
-    color: #fff;
-    transition: 0.6s;
-}
-.title-description p {
-    font-size: 22px;
-    text-align: center;
-    margin-bottom: 40px;
-}
-.character-description {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 10px;
-    overflow: auto;
 }
 
 .show {
@@ -207,19 +62,6 @@
     display: none;
 }
 
-.card-character {
-    width: 130px;
-    height: 150px;
-    text-align: center;
-    font-size: 14px;
-    margin: 20px 20px;
-}
-
-.card-character img {
-    width: 100px;
-    border-radius: 20px;
-}
-
 .container-favorited {
     width: 300px;
     height: 100vh;
@@ -229,26 +71,13 @@
     transition: 0.6s;
     overflow-y: scroll;
 }
-.btn-close {
-        margin: 10px 0 0 10px;
-        background-color: #00cc8b;
-        border: 1px solid transparent;
-        border-radius: 20px;
-        font-size: 16px;
-        color: #000;
-        transition: 0.6s;
-}
-.btn-close:hover {
-    background-color: transparent;
-    color: #00cc8b;
-    border: 1px solid #00cc8b;
-}
 
 .box-favorited {
     padding: 20px 0 0 20px;
     color: #fff;
 }
 .box-favorited p {
+    font-size: 18px;
     width: 90%;
     border-bottom: 1px solid #00cc8bbb;
     padding-bottom: 15px;
@@ -265,25 +94,6 @@
     color: #fff;
 }
 
-.container-pages {
-    text-align: center;
-}
-
-.pages {
-    background-color: transparent;
-    color: #00cc8b;
-    padding: 5px;
-    border: 1px solid #00cc8b00;
-    border-radius: 0px;
-    margin: 20px;
-    outline: none;
-    cursor: pointer;
-    transition: 0.6s;
-}
-
-.pages:hover {
-    border-color: #00cc8b;
-}
 
 @media(max-width: 410px) {
     .container-home { 

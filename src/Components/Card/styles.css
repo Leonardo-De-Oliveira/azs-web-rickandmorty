@@ -1,0 +1,43 @@
+.card {
+    width: 100%;
+    max-width: 350px;
+    height: 220px;
+    padding: 4px;
+    margin: 35px 10px;
+    font-size: 16px;
+    color: #fff;
+    
+    background-image: url('../../assets/rick.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-radius: 4px;
+    border: 2px solid #ffffff00;
+    transition: .6s;
+}
+.card:hover {
+    border-color: #00cc8b;
+}
+.card span {
+    font-weight: 500;
+    font-size: 20px;
+}
+.card img {
+    width: 100%;
+    height: 100%;
+}
+
+.card-description {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    gap: 5px;
+    flex-direction: column;
+}
+.card-description p {
+    font-size: 18px;
+    margin: 0 0 0 10px;
+}

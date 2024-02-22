@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import './styles.css';
 
-import { FaPlus } from "react-icons/fa6";
-import { GoCheck, GoChevronLeft, GoChevronRight } from "react-icons/go"
-import { MdFavoriteBorder } from "react-icons/md";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { GoChevronRight } from "react-icons/go"
 
 import Footer from '../../Components/Footer';
 import Banner from '../../Components/Banner';
+import Button from '../../Components/Button';
+import Search from '../../Components/Search';
+import BackAndNext from '../../Components/BackAndNext';
+import Card from '../../Components/Card';
+import Description from '../../Components/Description';
 
 
 const GET_EPISODES = gql`
@@ -31,7 +33,7 @@ const GET_EPISODES = gql`
   }
 `;
 
-    
+
 
 function Home() {
 
@@ -45,7 +47,7 @@ function Home() {
     const [open, setOpen] = useState('close');
 
     const [epNumber, setEpNumber] = useState();
-    const [epName, setName] = useState();
+    const [epName, setEpName] = useState();
     const [epDate, setEpDate] = useState();
     const [characters, setCharacters] = useState([]);
 
@@ -55,65 +57,10 @@ function Home() {
     const [text, setText] = useState('');
 
 
-    function showDetails(card) {
-        setEpNumber(card.episode);
-        setName(card.name);
-        setEpDate(card.air_date);
-        setCharacters(card.characters);
-
-        setShow('show');
-    }
-
     function close() {
         setShow('hidden');
     }
 
-    function isFavorited(id) {
-
-        return favoritedId.some(item => item.id === id)
-    }
-
-    function watched(id) {
-        return watchedId.includes(id)
-    }
-
-    // função toggleFavorite tem como parametro o id do card selecionado
-    function toggleFavorite(id, episode, name) {
-
-        //aqui temos um array favoritedId, e o prevIds são os objetos dentro do arrray
-        setFavoritedId(prevIds => {
-
-            // verifica se algum objeto no array possui o mesmo id
-            const isFavorite = prevIds.some(favId => favId.id === id);
-
-
-            if (isFavorite) {
-
-                //nesse caso (true) cria-se um novo array com função filter onde o objeto.id seja !==(diferente) do id passado como parametro    
-                //removendo o objeto com o id correspondente
-                return prevIds.filter(favId => favId.id !== id)
-
-            } else {
-
-                // se não houver um objeto que contém o id passado na props
-                // utiliza o spreed operator(...prevIds) para adicionar outro objeto com id passado na props   
-                return [...prevIds, { id: id, episode: episode, name: name }];
-            }
-
-        })
-
-    }
-
-    //altera opção visto do card
-    function toggleWatched(id) {
-        setWatchedId(prevIds => {
-            if (prevIds.includes(id)) {
-                return prevIds.filter(watchedId => watchedId !== id)
-            } else {
-                return [...prevIds, id]
-            }
-        })
-    }
 
     //abre e fecha a aba de favoritos
     function openClose() {
@@ -124,153 +71,77 @@ function Home() {
         }
     }
 
-    //coleta o texto inserido no input
-    function dataEnter(event) {
-        setText(event.target.value);
-    }    
 
-    function filterEpisode(card) {
-        const searchText = text ? text.toLowerCase() : '';
-        const episodeName = card.name ? card.name.toLowerCase() : '';
 
-        //verifica se seachtext está  vazio, se estiver a função retorna true
-        //então significa que nenhum filtro foi aplicado no input
-        if (!searchText) {
-            return true;
-        }
-        return episodeName.includes(searchText);
-    }
-    
-    function Next() {
-        if(currentPage !== 3) {
-            setCurrentPage(currentPage + 1)
-        }
-    }
-
-    function Back() {
-        if(currentPage !== 1) {
-            setCurrentPage(currentPage - 1)
-        }
-    }
 
     if (loading) return <div className='container-loading'><h1>Loading...</h1></div>;
 
     if (error) return <div className='container-loading'> <h1>Error : {error.message}</h1></div>;
-    
+
     return (
         <main className='container-home'>
 
             <Banner />
 
-            <div className='container-search'>
-                <div>
-                    <input
-                        type="text"
-                        placeholder='Enter the episode name'
-                        onChange={dataEnter}
-                    />
-                </div>
+            <Search open={open} setOpen={setOpen} setText={setText} />
 
-                <div className='box-btn'>
+            <BackAndNext currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-                    <button className='btn-open' onClick={openClose}>
-                        <GoChevronLeft size={30} />
-                        <p>favorite episodes</p>
-                    </button>
+            <section className='container-cards'>
 
-                </div>
-
-            </div>
-
-            <div className='container-pages'>
-                <button className='btn pages' onClick={Back}><IoIosArrowBack size={35} /></button>
-                <button className='btn pages' onClick={Next}><IoIosArrowForward size={35} /></button>
-            </div>
-
-            <div className='container-cards'>
-
-                {data.episodes.results.filter(filterEpisode)
-                .map((card) => (
-                            <div className='card' key={card.id}>
-                                <div className='card-description'>
-                                    <p>{card.episode} - <span>{card.name}</span></p>
-                                    <p>released: {card.air_date}</p>
-                                    <p>Number of characters <br /> in the episode: {card.characters.length}</p>
-
-                                    <div className='buttons'>
-                                        <button
-                                            className='btn show-details' onClick={() =>
-                                                showDetails(card)}>
-                                            Show Details
-                                        </button>
-
-                                        <button onClick={() =>
-                                            toggleFavorite(card.id, card.episode, card.name)}
-                                            className={`btn ${isFavorited(card.id) ? 'selected' : 'favorite'}`}>
-                                            <MdFavoriteBorder size={18} />
-                                        </button>
-
-                                        <button onClick={() =>
-                                            toggleWatched(card.id)}
-                                            className={`btn ${watched(card.id) ? 'selected' : 'watched'}`}>
-                                            {watched(card.id) ? <GoCheck size={18} /> : <FaPlus size={18} />}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                ))}
+                <Card 
+                    data={data}
+                    text={text}
+                    setEpNumber={setEpNumber}
+                    setEpName={setEpName}
+                    setEpDate={setEpDate}
+                    characters={characters} setCharacters={setCharacters}
+                    show={show} setShow={setShow}
+                    favoritedId={favoritedId} setFavoritedId={setFavoritedId}
+                    watchedId={watchedId} setWatchedId={setWatchedId} />
 
                 <div className={show}>
 
-                    <button onClick={close}>
+                    <Button onClick={close}>
                         X
-                    </button>
+                    </Button>
 
-                    <div className='container-description'>
-                        <div className='title-description'>
-                            <p>{epNumber} - <span>{epName}</span> - {epDate}</p>
-
-                            <p>Episode characters:</p>
-                        </div>
-                        <div className='character-description'>
-                            {characters.map((character) => (
-                                <div key={character.id} className='card-character'>
-                                    <img src={character.image} />
-                                    <p>Name: {character.name}</p>
-                                    <p>Species: {character.species}</p>
-                                    <p>Status: {character.status}</p>
-                                </div>
-
-                            ))}
-                        </div>
-
-                    </div>
+                    <Description 
+                        epNumber={epNumber} 
+                        epName={epName} 
+                        epDate={epDate} 
+                        characters={characters} />
 
                 </div>
 
-            </div>
+            </section>
 
-            <div className={`container-favorited ${open}`}>
+            <section className={`container-favorited ${open}`}>
 
-                <button className='btn-close' onClick={openClose}>
+                <Button
+                    className={'btn-close'}
+                    onClick={openClose} >
+
                     <GoChevronRight size={30} />
-                </button>
+                </Button>
 
                 {favoritedId.map((favorited) => (
 
                     <div className='box-favorited' key={favorited.id}>
-                        
+
                         <p>{favorited.name} <br />
-                        {favorited.episode}</p>
+                            {favorited.episode}</p>
 
                     </div>
                 ))}
-            </div>
-            
+                
+            </section>
+
             <Footer />
+
         </main>
 
-        
+
     );
 }
 

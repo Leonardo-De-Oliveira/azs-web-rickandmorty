@@ -1,0 +1,68 @@
+.btn-open {
+    margin-top: 50px;
+    background-color: #00cc8b;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 2px 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #000;
+    transition: 0.6s;
+}
+.btn-open:hover {
+    background-color: transparent;
+    color: #00cc8b;
+    border: 1px solid #00cc8b;
+}
+.btn {
+    background-color: #00cc8b;
+    color: #000000;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: 20px 0 0 10px;
+    border-radius: 20px;
+    border: 2px solid #00cc8b00;
+    outline: none;
+    cursor: pointer;
+    transition: 0.6s;
+}
+.btn-close {
+        margin: 10px 0 0 10px;
+        background-color: #00cc8b;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        font-size: 16px;
+        color: #000;
+        transition: 0.6s;
+}
+.btn-close:hover {
+    background-color: transparent;
+    color: #00cc8b;
+    border: 1px solid #00cc8b;
+}
+
+.pages {
+    background-color: transparent;
+    color: #00cc8b;
+    padding: 5px;
+    border: 1px solid #00cc8b00;
+    border-radius: 0px;
+    margin: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.pages:hover {
+    border-color: #00cc8b;
+}
+
+.selected {
+    color: #000;
+    background-color: #00cc8b;
+}
+.favorite, .watched {
+    background-color: #00cc8b00;
+    color:#fff;
+}
