@@ -56,7 +56,6 @@ function Home() {
 
     const [text, setText] = useState('');
 
-
     function close() {
         setShow('hidden');
     }
